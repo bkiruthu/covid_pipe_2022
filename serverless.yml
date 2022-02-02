@@ -16,18 +16,13 @@ package:
     - package-log.json
     - node_modules/**
 
-resources:
-  Resources:
-    covidcode-role-1zqefoje:
-      Type: AWS::IAM::Role
-      # etc etc
 
 functions:
   theLambda:
     name: covid_lambda
     handler: rapid_api_pipe.covid
     description: get-data
-    role: covidcode-role-1zqefoje
+    role: arn:aws:iam::211437524195:role/service-role/covidcode-role-1zqefoje
     timeout: 20 #seconds
     memorySize: 128 #mb
 
@@ -36,4 +31,3 @@ plugins:
   - serverless-python-requirements
 
 
-arn:aws:iam::211437524195:role/service-role/covidcode-role-1zqefoje
