@@ -1,0 +1,28 @@
+service: blog-github-actions
+provider:
+  name: aws
+  runtime: python3.7
+  region: eu-central-1
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+
+package:
+  individually: false
+  exclude:
+    - package.json
+    - package-log.json
+    - node_modules/**
+
+functions:
+  theLambda:
+    name: covid_lambda
+    handler: rapid_api_pipe.rapid_api
+    description: get-data
+    timeout: 20 #seconds
+    memorySize: 128 #mb
+
+
+plugins:
+  - serverless-python-requirements
