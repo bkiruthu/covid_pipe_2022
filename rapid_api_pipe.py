@@ -5,14 +5,14 @@ import json
 import datetime
 import pytz
 
+year = yesterday.strftime("%Y")
+month = yesterday.strftime("%m")
+day = yesterday.strftime("%d")
 
 def rapid_api():
     path = "https://api.covid19api.com/live/country/usa/status/confirmed/date/"
     today = datetime.datetime.now()
     yesterday = today - datetime.timedelta(days=1)
-    year = yesterday.strftime("%Y")
-    month = yesterday.strftime("%m")
-    day = yesterday.strftime("%d")
 
     url = path + str(yesterday)
 
@@ -31,7 +31,8 @@ def covid(event, context):
     timestamp = datetime.datetime.now(tz).strftime("%m_%d_%y_%H%M")
     file_name =f"covid-{timestamp}.json"
     print(file_name)
-    save_file_to_s3('cdc-ohio-covid', file_name, data_output)
+    bucket_name = f"cdc-ohio-covid/{year}/{month}/{day}"
+    save_file_to_s3(bucket_name, file_name, data_output)
     timestamp = None
 
 # save to a bucket
