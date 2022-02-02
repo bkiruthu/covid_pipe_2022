@@ -2,7 +2,7 @@ service: blog-github-actions
 provider:
   name: aws
   runtime: python3.7
-  region: eu-central-1
+  region: us-east-1
 
 custom:
   pythonRequirements:
