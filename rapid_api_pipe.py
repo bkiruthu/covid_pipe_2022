@@ -40,7 +40,14 @@ def save_file_to_s3(bucket, file_name, data_output):
    obj = s3.Object(bucket, file_name)
    tmp_file_path = "/tmp/nyrawdata.json"
    with open(tmp_file_path, "w") as file:
-       file.write(data_output)
+       file.write(str(data_output))
     
    s3.Bucket(bucket).upload_file(tmp_file_path, file_name)
    print('file added to s3')
+
+
+
+
+
+
+
