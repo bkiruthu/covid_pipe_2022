@@ -5,6 +5,8 @@ import json
 import datetime
 import pytz
 
+# Pull data from rapid API
+
 
 def rapid_api():
     path = "https://api.covid19api.com/live/country/usa/status/confirmed/date/"
